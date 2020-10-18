@@ -8,7 +8,7 @@
         <h2>Spring Test</h2>
         <hr>
         <br><br>
-        <a href="showForm.html">Tell us your name</a>
+        <a href="hello/showForm.html">Tell us your name</a>
         <br><br>
 
         The message: ${message}

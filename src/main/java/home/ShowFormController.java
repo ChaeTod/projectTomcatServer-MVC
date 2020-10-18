@@ -4,12 +4,14 @@ import org.springframework.stereotype.Controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/hello")  // parent mapping
 public class ShowFormController {
-    @RequestMapping(value= "/showForm")
+    @RequestMapping(value= "/showForm")  // sub mapping
     public ModelAndView showForm(HttpServletRequest request) {
         return new ModelAndView("jsp/view/show-form.jsp");
     }
@@ -19,7 +21,7 @@ public class ShowFormController {
         return new ModelAndView("jsp/view/processForm.jsp");
     }
 */
-    @RequestMapping(value= "/processForm")
+    @RequestMapping(value= "/processForm")  // sub mapping
     public ModelAndView processForm(HttpServletRequest request, Model model) {
         // read the request parameter from the HTML form
         String name = request.getParameter("studentName");
@@ -28,7 +30,7 @@ public class ShowFormController {
         name.toUpperCase();
 
         // create the message
-        String result = "Yo!" + name;
+        String result = "Yo! " + name;
 
         // add message to the model
         model.addAttribute("message", result);
@@ -36,23 +38,20 @@ public class ShowFormController {
         return new ModelAndView("jsp/view/main-menu.jsp");
     }
 
-    /*
-    public String letShoutDude(HttpServletRequest request, Model model){
-        // read the request parameter from the HTML form
-        String name = request.getParameter("studentName");
+    @RequestMapping(value= "/processFormThree")
+    public ModelAndView processFormTree(@RequestParam("studentName") String name, Model model) {
 
         // convert the data to all caps
-        name.toUpperCase();
+        name = name.toUpperCase();
 
         // create the message
-        String result = "Yo!" + name;
+        String result = "Hey my friend from V3 " + name +"!";
 
         // add message to the model
         model.addAttribute("message", result);
 
-        return "jsp/view/processForm.jsp";
+        return new ModelAndView("jsp/view/main-menu.jsp");
     }
-    */
 
 
 
