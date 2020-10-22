@@ -5,7 +5,7 @@
         <title>Input Form</title>
     </head>
     <body>
-        <form action="processForm.html" method="GET">
+        <form action="processFormThree.html" method="GET">
             <input type="text" name="studentName" placeholder=" What's your name?" />
             <input type="submit" />
         </form>
